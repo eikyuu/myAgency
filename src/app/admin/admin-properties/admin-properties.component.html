@@ -14,7 +14,7 @@
 <div class="modal fade" id="propertiesFormModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered" role="document">
     <div class="modal-content">
-      <form>
+      <form [formGroup]="propertiesForm" (ngSubmit)="onSubmitPropertiesForm()">
         <div class="modal-header">
           <h5 class="modal-title" id="exampleModalLongTitle">Edition d'un bien</h5>
           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -23,35 +23,35 @@
         </div>
         <div class="modal-body">
           <div class="form-group">
-            <input type="text" placeholder="Titre" class="form-control" formControlName="title">
+            <input type="text" placeholder="Titre" class="form-control" name="title"  required>
           </div>
           <div class="input-group mb-3">
             <div class="input-group-prepend">
               <label class="input-group-text" for="inputGroupSelect01">Catégories</label>
             </div>
-            <select class="custom-select" id="inputGroupSelect01">
-              <option selected>Choose...</option>
-              <option value="1">One</option>
-              <option value="2">Two</option>
-              <option value="3">Three</option>
+            <select class="custom-select" id="inputGroupSelect01" name="categories" >
+              <option value="2">Maison</option>
+              <option value="3">Appartement</option>
             </select>
           </div>
           <div class="form-row">
             <div class="form-group col-6">
-              <input type="text" placeholder="Surface(m2)" class="form-control">
+              <input type="text" placeholder="Surface(m2)" class="form-control" name="surface" >
             </div>
             <div class="form-group col-6">
-              <input type="text"  placeholder="Nombre de piéces" class="form-control">
+              <input type="text"  placeholder="Nombre de piéces" class="form-control" name="rooms" >
             </div>
           </div>
           <div class="form-group">
-            <textarea class="form-control w-100" rows="4" placeholder="Description du bien" ></textarea>
+            <textarea class="form-control w-100" rows="4" placeholder="Description du bien" name="description"  ></textarea>
           </div>
-          <input type="text" placeholder="Prix" class="form-control">
+          <div class="form-group">
+            <input type="text" placeholder="Prix" class="form-control" name="price" >
+          </div>
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-dismiss="modal">Annuler</button>
-          <button type="button" class="btn btn-primary">Enregistrer</button>
+          <button type="button" class="btn btn-primary" type="submit" [disabled]="propertiesForm.invalid">Enregistrer</button>
         </div>
       </form>
     </div>
