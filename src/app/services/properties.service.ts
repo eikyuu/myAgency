@@ -55,4 +55,7 @@ export class PropertiesService {
     //   }
     // });
   }
+  createProperty(property) {
+    this.properties.push(property);
+  }
 }
