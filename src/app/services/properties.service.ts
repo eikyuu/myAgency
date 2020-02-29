@@ -18,7 +18,7 @@ export class PropertiesService {
       sold : false
     },
     {
-      title : 'Belle villa',
+      title : 'Une Belle villa',
       category : 'Maison',
       sold : true
     }
@@ -57,5 +57,15 @@ export class PropertiesService {
   }
   createProperty(property) {
     this.properties.push(property);
+  }
+
+  deleteProperty(index) {
+    this.properties.splice(index, 1);
+    this.emitProperties();
+  }
+
+  updateProperty(property, index) {
+    this.properties[index] = property;
+    this.emitProperties();
   }
 }
